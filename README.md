@@ -13,3 +13,6 @@ the no of data on which we train our classifier the more accurate our prediction
 approx it will be about 15-20 mins to train about 40,000 train data but this may vary depending upon the configuration of your data<br/>
 
 link to kaggle contest page: <a>https://www.kaggle.com/c/digit-recognizer</a>
+
+#update
+using 40,000 training examples i was abe to achive accuracy of 96.18 %
