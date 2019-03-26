@@ -1,4 +1,3 @@
 pandas
-sklearn.svm
-sklearn.preprocessing
+sklearn
 pickle
