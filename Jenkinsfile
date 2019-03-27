@@ -1,8 +1,9 @@
 pipeline{
-  node {
-    checkout scm
-    def lol = docker.build('adiankush/devops-ml')
-  }
+  agent { dockerfile true }
+  //node {
+    //checkout scm
+    //def lol = docker.build('adiankush/devops-ml')
+  //}
   stages {
     stage('Build'){
       steps {
@@ -12,7 +13,8 @@ pipeline{
     }
     stage('Push to hub'){
       steps {
-        sh 'docker push adiankush/devops-ml'
+        echo 'lol'
+        //sh 'docker push adiankush/devops-ml'
       }
     }
   }
