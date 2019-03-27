@@ -4,7 +4,7 @@ pipeline{
     stage('Build'){
       steps {
         sh 'ls'
-        sh 'docker build -t adiankush/devops-ml'
+        sh 'docker build . -t adiankush/devops-ml'
       }
     }
     stage('Push to hub'){
