@@ -1,5 +1,5 @@
 pipeline{
-  agent node {
+  node {
     checkout scm
     def lol = docker.build('adiankush/devops-ml')
   }
