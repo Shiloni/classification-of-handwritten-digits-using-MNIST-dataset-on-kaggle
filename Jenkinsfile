@@ -15,7 +15,7 @@ pipeline{
     stage('Push to hub'){
       steps {
         //echo 'lol'
-        sh 'docker push adiankush/devops-ml'
+        sh 'docker push adiankush/devops-ml:1'
       }
     }
   }
