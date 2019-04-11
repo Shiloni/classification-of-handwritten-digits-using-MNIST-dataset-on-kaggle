@@ -1,5 +1,6 @@
+joblib
 pandas
 sklearn
 flask
 werkzeug 
-joblib
+
