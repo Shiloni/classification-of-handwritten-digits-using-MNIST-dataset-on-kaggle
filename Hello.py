@@ -3,7 +3,7 @@ from werkzeug import secure_filename
 import pandas as pd 
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
-import pickle
+import joblib
  
 
 app = Flask(__name__)
@@ -11,13 +11,13 @@ app = Flask(__name__)
 def savepickle(data, filename):
     """Saves the data into pickle format"""
     save_documents = open(filename +'.pickle', 'wb')
-    pickle.dump(data, save_documents)
+    joblib.dump(data, save_documents)
     save_documents.close()
 
 def loadpickle(data_filepath):
     #Loads up the pickled dataset for further parsing and preprocessing
     documents_f = open(data_filepath+'.pickle', 'rb')
-    data = pickle.load(documents_f)
+    data = joblib.load(documents_f)
     documents_f.close()
     
     return data
