@@ -1,6 +1,5 @@
-joblib
 pandas
 sklearn
 flask
-werkzeug 
-
+werkzeug
+logging

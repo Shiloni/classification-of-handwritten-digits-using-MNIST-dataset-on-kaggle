@@ -3,21 +3,22 @@ from werkzeug import secure_filename
 import pandas as pd 
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
-import joblib
- 
+import pickle
+import logging
+import logging.handlers
 
 app = Flask(__name__)
 
 def savepickle(data, filename):
     """Saves the data into pickle format"""
     save_documents = open(filename +'.pickle', 'wb')
-    joblib.dump(data, save_documents)
+    pickle.dump(data, save_documents)
     save_documents.close()
 
 def loadpickle(data_filepath):
     #Loads up the pickled dataset for further parsing and preprocessing
     documents_f = open(data_filepath+'.pickle', 'rb')
-    data = joblib.load(documents_f)
+    data = pickle.load(documents_f)
     documents_f.close()
     
     return data
@@ -101,5 +102,12 @@ def upload_file3():
       test(mod)
       return ("file uploaded successfully")
 
+
 if __name__ == '__main__':
-   app.run(debug = True)
+   handler = logging.handlers.RotatingFileHandler('log.txt',maxBytes=1024 * 1024)
+   #handler.setFormatter(formatter)
+   logging.getLogger('werkzeug').setLevel(logging.DEBUG)
+   logging.getLogger('werkzeug').addHandler(handler)
+   app.logger.setLevel(logging.WARNING)
+   app.logger.addHandler(handler)
+   app.run(host='0.0.0.0')
