@@ -3,7 +3,7 @@ from werkzeug import secure_filename
 import pandas as pd 
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
-import pickle
+#import pickle
 import logging
 import logging.handlers
 
