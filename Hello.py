@@ -3,23 +3,23 @@ from werkzeug import secure_filename
 import pandas as pd 
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
-#import pickle
 import logging
 import logging.handlers
+import joblib 
 
 app = Flask(__name__)
 
 def savepickle(data, filename):
     """Saves the data into pickle format"""
-    save_documents = open(filename +'.pickle', 'wb')
-    pickle.dump(data, save_documents)
-    save_documents.close()
+   #  save_documents = open(filename +'.pickle', 'wb')
+    joblib.dump(data, filename)
+   #  save_documents.close()
 
 def loadpickle(data_filepath):
     #Loads up the pickled dataset for further parsing and preprocessing
-    documents_f = open(data_filepath+'.pickle', 'rb')
-    data = pickle.load(documents_f)
-    documents_f.close()
+   #  documents_f = open(data_filepath+'.pickle', 'rb')
+    data = joblib.load(data_filepath)
+   #  documents_f.close()
     
     return data
 
@@ -37,7 +37,7 @@ def train():
    print('using support vector machines : ')
    SVM = SVC().fit(X_train , y_train)
    print('accuracy on training set : ',SVM.score(X_train,y_train))
-   savepickle(SVM,'model')
+   savepickle(SVM,'model.pkl')
 
 
 def test(SVM):
@@ -98,7 +98,7 @@ def upload_file3():
       f.filename = 'test.csv'
       f.save(secure_filename(f.filename))
       #train()
-      mod = loadpickle('model')
+      mod = loadpickle('model.pkl')
       test(mod)
       return ("file uploaded successfully")
 
@@ -110,4 +110,4 @@ if __name__ == '__main__':
    logging.getLogger('werkzeug').addHandler(handler)
    app.logger.setLevel(logging.WARNING)
    app.logger.addHandler(handler)
-   app.run(host='0.0.0.0')
+   app.run(debug=True)
