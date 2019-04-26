@@ -110,4 +110,4 @@ if __name__ == '__main__':
    logging.getLogger('werkzeug').addHandler(handler)
    app.logger.setLevel(logging.WARNING)
    app.logger.addHandler(handler)
-   app.run(debug=True)
+   app.run(host='0.0.0.0', debug=True)
