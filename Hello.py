@@ -104,7 +104,7 @@ def upload_file3():
 
 
 if __name__ == '__main__':
-   handler = logging.handlers.RotatingFileHandler('log.txt',maxBytes=1024 * 1024)
+   handler = logging.handlers.RotatingFileHandler('logs/server.log',maxBytes=1024 * 1024)
    #handler.setFormatter(formatter)
    logging.getLogger('werkzeug').setLevel(logging.DEBUG)
    logging.getLogger('werkzeug').addHandler(handler)
