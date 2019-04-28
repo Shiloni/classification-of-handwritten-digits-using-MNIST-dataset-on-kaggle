@@ -3,3 +3,4 @@ sklearn
 flask
 werkzeug
 joblib
+openpyxl

@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 import logging
 import logging.handlers
 import joblib 
+from openpyxl import Workbook
 
 app = Flask(__name__)
 
@@ -89,7 +90,7 @@ def upload_file2():
       f.save(secure_filename(f.filename))
       train()
       
-      return render_template('upload1.html')	
+      return render_template('hello.html')	
 
 @app.route('/uploader1', methods = ['GET', 'POST'])
 def upload_file3():
@@ -100,7 +101,8 @@ def upload_file3():
       #train()
       mod = loadpickle('model.pkl')
       test(mod)
-      return ("file uploaded successfully")
+      #return ("file uploaded successfully")
+      return render_template('hello.html')
 
 
 if __name__ == '__main__':
